@@ -37,7 +37,7 @@ export default function cabana({navigation}) {
                   color="#442484"
                   reverse
                   containerStyle={styles.btnContainer}
-                  onPress={() => navigation.navigate('addCabana')}
+                  onPress={() => navigation.navigate('add-Cabana')}
                 />
             )
         }

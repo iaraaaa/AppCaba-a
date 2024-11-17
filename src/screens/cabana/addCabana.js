@@ -8,7 +8,6 @@ import AddCabanaForm from '../../../components/cabana/addCabanaForm'
 
 export default function addCabana({ navigation }) {
 
-
     const toastRef = useRef()
     const [loading, setLoading] = useState(false)
 
