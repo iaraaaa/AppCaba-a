@@ -115,10 +115,12 @@ export const updatePassword = async(password) => {
 }
 
 
+
+
 export const isAdmin = () => {
     const auth = getAuth();
     const user = auth.currentUser;
-    return user && user.uid === "tU1ROMtXMjWQxgGZzUcuc2Gm64m1";
+    return user && user.uid === "pepito1@gmail.com";
 };
 
 export const addDocumentWithoutId = async(collection, data) => {
@@ -165,3 +167,26 @@ export const uploadImage = async(image, path, name) => {
 }
 
 
+
+export const getCabanas = async(limitCabanas) => {
+    const result = { statusResponse: true, error: null, cabanas: [], startCanabas: null }
+    try {
+        const response = await db
+            .collection("cabanas")
+            .orderBy("createAt", "desc")
+            .limit(limitCabanas)
+            .get()
+        if (response.docs.length > 0) {
+            result.startCanabas = response.docs[response.docs.length - 1]
+        }
+        response.forEach((doc) => {
+            const restaurant = doc.data()
+            restaurant.id = doc.id
+            result.restaurants.push(restaurant)
+        })
+    } catch (error) {
+        result.statusResponse = false
+        result.error = error
+    }
+    return result     
+}

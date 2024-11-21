@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import addCabana from '../src/screens/cabana/addCabana'
 
 import cabana from '../src/screens/cabana/cabana'
+import AddCabanaForm from '../components/cabana/addCabanaForm'
 
 const Stack = createStackNavigator()
 
@@ -19,6 +20,8 @@ export default function cabanaStack() {
                 component={addCabana}
                 options={{ title: "crear cabana" }}
             />
+        
+
         </Stack.Navigator>
     )
 }

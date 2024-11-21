@@ -1,4 +1,4 @@
-import * as Permissions from 'expo-permissions'
+
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { size } from 'lodash'
@@ -10,24 +10,6 @@ export function validateEmail(email) {
 
 
 
-export const getCurrentLocation = async() => {
-  const response = { status: false, location: null }
-  const resultPermissions = await Permissions.askAsync(Permissions.LOCATION)
-  if (resultPermissions.status === "denied") {
-      Alert.alert("Debes dar permisos para la localización.")
-      return response
-  }
-  const position = await Location.getCurrentPositionAsync({})
-  const location = {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-      latitudeDelta: 0.001,
-      longitudeDelta: 0.001
-  }
-  response.status = true
-  response.location = location
-  return response
-}
 
 export const loadImageFromGallery = async (array) => {
   const response = { status: false, image: null };
@@ -55,11 +37,7 @@ export const uploadImage = async (path, name) => {
   const result = { statusResponse: false, error: null, url: null };
 
   // Solicitar permisos para acceder a la galería
-  const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
-  if (!permissionResult.granted) {
-      alert("Necesitas otorgar permisos para acceder a las imágenes.");
-      return result;
-  }
+  
 
   // Abrir la galería para seleccionar una imagen
   const pickerResult = await ImagePicker.launchImageLibraryAsync({
@@ -96,5 +74,14 @@ export const uploadImage = async (path, name) => {
 
   return result; // Devolver el resultado con el estado y la URL
 };
+
+
+export const formatPhone = (callingCode, phone) => {
+    if (size(phone) < 10)
+    {
+        return `+(${callingCode}) ${phone}`
+    }
+    return `+(${callingCode}) ${phone.substr(0, 3)} ${phone.substr(3, 3)} ${phone.substr(6, 4)}`
+}
 
 const styles = StyleSheet.create({})

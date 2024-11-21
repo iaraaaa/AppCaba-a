@@ -11,7 +11,7 @@ const firebaseConfig = {
     storageBucket: "cabana-55a4c.firebasestorage.app",
     messagingSenderId: "408758349775",
     appId: "1:408758349775:web:d0e07d27e4649e8eaa2cba",
-    measurementId: "G-RDMJX2BPGR"
+    measurementId: "G-RDMJX2BPGR"
 };
 
 // Inicializar Firebase

@@ -22,9 +22,7 @@ export default function Navigacion() {
             case "cabana":
                 iconName = "greenhouse"
                 break;
-            case "search":
-                iconName = "magnify"
-                break;
+          
             case "cuenta":
                 iconName = "account"
                 break;
@@ -62,11 +60,7 @@ export default function Navigacion() {
                     component={cabanaStack}
                     options={{ title: "Cabañas" }}
                 />
-                <Tab.Screen
-                    name="search"
-                    component={searchStack}
-                    options={{ title: "Buscar" }}
-                />
+        
                 <Tab.Screen
                     name="cuenta"
                     component={cuentaStack}
